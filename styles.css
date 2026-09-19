@@ -217,9 +217,28 @@ h1 {
 .app-footer {
   margin-top: 24px;
   padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   color: var(--muted-color);
   border-top: 1px solid var(--border-color);
-  text-align: center;
+}
+
+.clear-completed-button {
+  padding: 6px 10px;
+  color: var(--danger-color);
+  background: transparent;
+  border: 1px solid var(--danger-color);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.clear-completed-button:hover {
+  color: var(--card-background);
+  background: var(--danger-color);
 }
 
 .sr-only {
