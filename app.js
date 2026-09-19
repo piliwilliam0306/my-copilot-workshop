@@ -6,6 +6,7 @@ const input = document.querySelector('#todo-input');
 const list = document.querySelector('#todo-list');
 const emptyState = document.querySelector('#empty-state');
 const remainingCount = document.querySelector('#remaining-count');
+const clearCompletedButton = document.querySelector('#clear-completed');
 const themeToggle = document.querySelector('#theme-toggle');
 const themeIcon = document.querySelector('#theme-icon');
 const themeLabel = document.querySelector('#theme-label');
@@ -90,6 +91,19 @@ function renderTodos() {
   emptyState.hidden = visibleTodos.length > 0;
   emptyState.textContent = getEmptyMessage();
   remainingCount.textContent = `未完成:${todos.filter((todo) => !todo.completed).length} 項`;
+  clearCompletedButton.hidden = !todos.some((todo) => todo.completed);
+}
+
+// 確認後一次清除所有已完成的待辦事項
+function clearCompletedTodos() {
+  const hasCompletedTodos = todos.some((todo) => todo.completed);
+  if (!hasCompletedTodos || !window.confirm('確定要清除所有已完成的待辦事項嗎？')) {
+    return;
+  }
+
+  todos = todos.filter((todo) => !todo.completed);
+  saveTodos();
+  renderTodos();
 }
 
 // 套用主題並更新按鈕上的圖示與文字
@@ -156,6 +170,8 @@ list.addEventListener('click', (event) => {
   saveTodos();
   renderTodos();
 });
+
+clearCompletedButton.addEventListener('click', clearCompletedTodos);
 
 // 切換篩選條件並更新目前按鈕的樣式
 filterButtons.forEach((button) => {
