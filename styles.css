@@ -12,6 +12,20 @@
   --shadow-color: rgba(35, 61, 53, 0.12);
 }
 
+:root[data-theme="dark"] {
+  --page-background: #18211f;
+  --card-background: #24302c;
+  --item-background: #2d3a35;
+  --text-color: #edf4f0;
+  --muted-color: #aabbb3;
+  --border-color: #43534c;
+  --accent-color: #6bc0a5;
+  --accent-hover: #82d1b5;
+  --danger-color: #f08b8b;
+  --danger-hover: #493333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -38,10 +52,37 @@ body {
   box-shadow: 0 10px 28px var(--shadow-color);
 }
 
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
 h1 {
-  margin: 0 0 24px;
+  margin: 0;
   font-size: 1.6rem;
   letter-spacing: 0;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  color: var(--text-color);
+  background: var(--item-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-color);
 }
 
 .todo-form {
@@ -63,6 +104,8 @@ h1 {
 
 .todo-input:focus-visible,
 .add-button:focus-visible,
+.theme-toggle:focus-visible,
+.filter-button:focus-visible,
 .delete-button:focus-visible,
 .todo-item input:focus-visible {
   outline: 3px solid rgba(47, 125, 104, 0.25);
@@ -82,6 +125,33 @@ h1 {
 
 .add-button:hover {
   background: var(--accent-hover);
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  flex: 1;
+  padding: 8px 10px;
+  color: var(--muted-color);
+  background: var(--item-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  color: var(--text-color);
+}
+
+.filter-button.is-active {
+  color: #ffffff;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 .todo-list {
@@ -175,5 +245,13 @@ h1 {
 
   .add-button {
     padding: 0 14px;
+  }
+
+  .app-header {
+    align-items: flex-start;
+  }
+
+  .theme-toggle {
+    padding: 6px 8px;
   }
 }
