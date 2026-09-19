@@ -52,10 +52,10 @@ function getEmptyMessage() {
   }
 
   if (currentFilter === 'active') {
-    return '目前沒有未完成的事項。';
+    return '目前沒有未完成的事項,切換到「全部」可查看其他待辦。';
   }
 
-  return '目前沒有已完成的事項。';
+  return '目前沒有已完成的事項,切換到「全部」可查看其他待辦。';
 }
 
 // 依照資料重新繪製清單與統計數字
